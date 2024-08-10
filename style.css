@@ -1,0 +1,96 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: lightcoral;
+}
+
+.clock {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 500px;
+    height: 500px;
+    position: relative;
+    background-color: rgb(24, 228, 13);
+    border-radius: 50%;
+    background: radial-gradient(circle, #032c48, #030333);
+}
+
+.clock::before {
+    content: "";
+    width: 525px;
+    height: 525px;
+    position: absolute;
+    border-radius: 50%;
+    background: linear-gradient(to right, #00d9ff, #600267);
+    box-shadow: 0 0 15px 15px rgba(0, 0, 0, 0.2);
+    z-index: -1;
+}
+
+.number {
+    transform: rotate(calc(30deg * var(--n)));
+    position: absolute;
+    text-align: center;
+    inset: 20px;
+    font-size: 40px;
+    color: #0a9ab4;
+    text-shadow: 0, 0, 12px #ee00ff;
+}
+
+.number b {
+    transform: rotate(calc(-30deg * var(--n)));
+    display: inline-block;
+}
+
+.center-dot {
+    position: absolute;
+    width: 27px;
+    height: 27px;
+    background-color: #ee00ff;
+    border: 6px solid #00d9ff;
+    border-radius: 50%;
+    transform: translate(50%);
+}
+
+#hour-hand {
+    --rotate: 0;
+    position: absolute;
+    transform-origin: top left;
+    top: 50%;
+    left: 50%;
+    transform: translate(50%) rotate(calc(var(--rotate)* 1deg)) scaleY(-1);
+    width: 12px;
+    height: 130px;
+    background: linear-gradient(to top, #00d9ff, #ee00ff);
+}
+
+#minute-hand {
+    --rotate: 0;
+    position: absolute;
+    transform-origin: top right;
+    top: 50%;
+    left: 50%;
+    transform: translate(50%) rotate(calc(var(--rotate)* 1deg)) scaleY(-1);
+    width: 12px;
+    height: 192px;
+    background: linear-gradient(to top, #00d9ff, #67046e);
+}
+
+#second-hand {
+    --rotate: 0;
+    position: absolute;
+    transform-origin: top right;
+    top: 50%;
+    left: 50%;
+    transform: translate(50%) rotate(calc(var(--rotate)* 1deg)) scaleY(-1);
+    width: 6px;
+    height: 40%;
+    background: linear-gradient(to top, #00d9ff, #ee00ff);
+}
